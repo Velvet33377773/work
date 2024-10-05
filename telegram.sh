@@ -42,7 +42,7 @@ NET: $(vnstat -i eth0 -h 2 |tail -n 3 |grep -v - |head -n1 | awk '{ print $2 $3 
 Block: $(fail2ban-client status sshd | grep 'Currently banned' |cut -d : -f2)
 Users online: $(w | awk '/USER/ {p=1; next} p {print $1}')
 
-Payday: $difference дней
+Payday: $difference days
 "
 
 curl -s -X POST "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage" -d chat_id="${CHAT_ID}" -d text="${MESSAGE}" 2>&1 >/dev/null
